@@ -1,0 +1,5 @@
+pip>=22.0.4
+python-dotenv>=0.20.0
+python-telegram-bot>=13.11
+requests>=2.27.1
+wget>=3.2
