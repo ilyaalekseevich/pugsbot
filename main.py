@@ -4,6 +4,7 @@ import wget
 import os
 import time
 import telegram
+import random
 from simpledemotivators import Demotivator
 from dotenv import load_dotenv
 load_dotenv()
@@ -25,14 +26,21 @@ def post_image():
     os.remove("doge.jpg")
 
 
-def evilinsult():
-    phrase = requests.get('https://evilinsult.com/generate_insult.php').content
-    string_phrase = str(phrase)
-    refactoring_phrase = string_phrase.replace("'","").replace("b","")
-    return(refactoring_phrase)
+#def evilinsult():
+#    phrase = requests.get('https://evilinsult.com/generate_insult.php').content
+#    string_phrase = str(phrase)
+#    refactoring_phrase = string_phrase.replace("'","").replace("b","")
+#    return(refactoring_phrase)
+
+def auf_phrase():
+    data = requests.get('https://raw.githubusercontent.com/Infqq/auf_gen/main/phrases.txt').text.splitlines()
+    phrase = random.choice(data)
+    return(phrase)
 
 def create_demotivator():
-    phrase = evilinsult()
+   #phrase = evilinsult()
+    phrase = auf_phrase()
+    print(phrase)
     dem = Demotivator(phrase) 
     dem.create('doge.jpg', result_filename='doge.jpg')
 
