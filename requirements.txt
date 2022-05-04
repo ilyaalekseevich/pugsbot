@@ -4,4 +4,4 @@ python-telegram-bot>=13.11
 #requests>=2.27.1
 requests==2.25.1
 wget>=3.2
-simpledemotivators==2.1.0
+https://github.com/Infqq/simpledemotivators/archive/main.zip
