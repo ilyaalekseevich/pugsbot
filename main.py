@@ -4,6 +4,7 @@ import wget
 import os
 import time
 import telegram
+from simpledemotivators import Demotivator
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -11,15 +12,32 @@ TELEGRAM_BOT_TOKEN = os.environ['TELEGRAM_BOT_TOKEN']
 TELEGRAM_CHAT_ID = os.environ['TELEGRAM_CHAT_ID']
 bot = telegram.Bot(token=TELEGRAM_BOT_TOKEN)
 
-def post_image():
+
+def get_image():
     dogapi_url = "https://dog.ceo/api/breed/"
     dog_breed = "pug"
     get_image_url = dogapi_url + dog_breed + "/" + "images/random"
     get_image_url_request = requests.get(get_image_url).json()['message']
     download_image = wget.download(get_image_url_request, "doge.jpg")
+
+def post_image():
     bot.send_photo(chat_id=TELEGRAM_CHAT_ID, photo=open("doge.jpg", 'rb'))
     os.remove("doge.jpg")
 
+
+def evilinsult():
+    phrase = requests.get('https://evilinsult.com/generate_insult.php').content
+    string_phrase = str(phrase)
+    refactoring_phrase = string_phrase.replace("'","").replace("b","")
+    return(refactoring_phrase)
+
+def create_demotivator():
+    phrase = evilinsult()
+    dem = Demotivator(phrase) 
+    dem.create('doge.jpg', result_filename='doge.jpg')
+
 while True:
+    get_image()
+    create_demotivator()
     post_image()
     time.sleep(43200)
