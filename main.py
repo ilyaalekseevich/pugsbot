@@ -11,7 +11,7 @@ TELEGRAM_BOT_TOKEN = os.environ['TELEGRAM_BOT_TOKEN']
 TELEGRAM_CHAT_ID = os.environ['TELEGRAM_CHAT_ID']
 bot = telegram.Bot(token=TELEGRAM_BOT_TOKEN)
 
-while True:
+def post_image():
     dogapi_url = "https://dog.ceo/api/breed/"
     dog_breed = "pug"
     get_image_url = dogapi_url + dog_breed + "/" + "images/random"
@@ -19,5 +19,7 @@ while True:
     download_image = wget.download(get_image_url_request, "doge.jpg")
     bot.send_photo(chat_id=TELEGRAM_CHAT_ID, photo=open("doge.jpg", 'rb'))
     os.remove("doge.jpg")
-    time.sleep(43200)
 
+while True:
+    post_image()
+    time.sleep(43200)
