@@ -43,12 +43,12 @@ def create_demotivator():
     dem.create('doge.jpg', result_filename='doge.jpg')
 
 def main():
-    get_image()
-    create_demotivator()
-    post_image()
-    os.remove("doge.jpg")
+    while True:
+        get_image()
+        create_demotivator()
+        post_image()
+        os.remove("*.jpg")
 
-while True:
-    if __name__ == "__main__"
+if __name__ == "__main__"
     main()
     time.sleep(43200)
