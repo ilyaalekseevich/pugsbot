@@ -42,7 +42,7 @@ def create_demotivator():
     dem = Demotivator(phrase) 
     dem.create('doge.jpg', result_filename='doge.jpg')
 
-def main()
+def main():
     get_image()
     create_demotivator()
     post_image()
