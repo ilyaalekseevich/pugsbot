@@ -48,6 +48,6 @@ def main():
         post_image()
         os.remove("doge.jpg")
 
-if __name__ == "__main__"
+if __name__ == "__main__":
     main()
     time.sleep(43200)
