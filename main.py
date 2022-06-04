@@ -36,7 +36,6 @@ def auf_phrase():
     return(phrase)
 
 def create_demotivator():
-   #phrase = evilinsult()
     phrase = auf_phrase()
     print(phrase)
     dem = Demotivator(phrase) 
