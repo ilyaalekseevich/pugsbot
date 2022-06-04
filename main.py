@@ -47,7 +47,7 @@ def main():
         get_image()
         create_demotivator()
         post_image()
-        os.remove("*.jpg")
+        os.remove("doge.jpg")
 
 if __name__ == "__main__"
     main()
