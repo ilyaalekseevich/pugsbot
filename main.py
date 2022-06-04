@@ -22,13 +22,7 @@ def get_image():
     download_image = wget.download(get_image_url_request, "doge.jpg")
 
 def post_image():
-    bot.send_photo(chat_id=TELEGRAM_CHAT_ID, photo=open("doge.jpg", 'rb'))
-
-#def evilinsult():
-#    phrase = requests.get('https://evilinsult.com/generate_insult.php').content
-#    string_phrase = str(phrase)
-#    refactoring_phrase = string_phrase.replace("'","").replace("b","")
-#    return(refactoring_phrase)
+    bot.send_photo(chat_id=TELEGRAM_CHAT_ID, photo=open("demo_doge.jpg", 'rb'))
 
 def auf_phrase():
     data = requests.get('https://raw.githubusercontent.com/Infqq/auf_gen/main/phrases.txt').text.splitlines()
@@ -39,15 +33,16 @@ def create_demotivator():
     phrase = auf_phrase()
     print(phrase)
     dem = Demotivator(phrase) 
-    dem.create('doge.jpg', result_filename='doge.jpg')
+    dem.create('doge.jpg', result_filename='demo_doge.jpg')
+    os.remove("doge.jpg")
 
 def main():
     while True:
         get_image()
         create_demotivator()
         post_image()
-        os.remove("doge.jpg")
+        os.remove("demo_doge.jpg")
+        time.sleep(43200)
 
 if __name__ == "__main__":
     main()
-    time.sleep(43200)
